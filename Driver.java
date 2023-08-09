@@ -8,6 +8,9 @@ public class Driver {
 		}
 		
 		String input_file = args[0];
+		
+		Preprocessor pp = new Preprocessor(input_file);
+		pp.preprocess();
 
 	}
 

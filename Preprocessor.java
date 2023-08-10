@@ -2,6 +2,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 
 
@@ -17,12 +18,14 @@ public class Preprocessor {
 		File file = new File(this.filePath);
 		FileReader input;
 		BufferedReader reader;
+		FileWriter writer;
 		try {
 			int i = 0;
 			input = new FileReader(file);
 			reader = new BufferedReader(input);
 			try {
 				String line;
+				writer = new FileWriter("in1.txt");
 				while ((line = reader.readLine()) != null) {
 					if (line.trim().isEmpty() || line.contains("/*") || line.contains("//") || line.contains("import"))
 						continue;
@@ -32,9 +35,11 @@ public class Preprocessor {
 					{
 						line = line.substring(0, i) + line.substring(i+1);  //concatenate substrings going from first character to the character before the space between last two characters and the last character
 					}
-					
-					System.out.println(line); 
+					writer.write(line);  //write line by line
+					writer.write(System.lineSeparator());     //get writer to next line
 				}
+				reader.close();
+				writer.close();
 				
 			} catch (IOException e) {
 				System.out.println("Unable To Read");

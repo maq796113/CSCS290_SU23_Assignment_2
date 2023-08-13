@@ -11,6 +11,11 @@ public class Driver {
 		
 		Preprocessor pp = new Preprocessor(input_file);
 		pp.preprocess();
+		Processor p = new Processor("out1.txt");
+		p.process();
+		
+		LexicalAnalyzer la = new LexicalAnalyzer("out2.txt");
+		la.analyze();
 
 	}
 

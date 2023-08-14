@@ -16,8 +16,8 @@ public class LexicalAnalyzer {
 			FileReader fr = new FileReader(this._filePath);
 			int i;
 			
-			boolean flag = false;
-			boolean flag1 = false;
+			boolean flag = false;    //used to check if the previous character read was a punctuator
+			boolean flag1 = false;   // 
 			int j = 0;
 			int k;
 			int totalNumOfchars = 0;
@@ -43,8 +43,8 @@ public class LexicalAnalyzer {
 						}
 						
 						
-						
-						if ((flag && j>0) || flag1) {
+						 
+						if ((flag && j>0) || flag1) {   // if the previous character read was also punctuator i.e j>0 or the previous character was a space....
 							System.out.println((char) i);   //print punctuators given that the previous charcter that was printed was also a punctuator
 						}
 						
@@ -56,9 +56,9 @@ public class LexicalAnalyzer {
 						flag1 = false;
 					}
 						
-					else {  
+					else {  //if there is space in the file
 						
-						if (!flag) {
+						if (!flag) {  
 							System.out.println();
 						}
 						
